@@ -8,5 +8,25 @@
     "username": "user",
     "password": "userpassword",
     "role": "user"
+  },
+  {
+    "username": "pelpav",
+    "password": "root",
+    "role": "admin"
+  },
+  {
+    "username": "user1",
+    "password": "azerty",
+    "role": "user"
+  },
+  {
+    "username": "jean",
+    "password": "qwerty",
+    "role": "user"
+  },
+  {
+    "username": "Georges",
+    "password": "azerty",
+    "role": "user"
   }
 ]

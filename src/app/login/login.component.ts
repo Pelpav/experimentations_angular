@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { User } from './users';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [ UserService]
@@ -15,13 +16,13 @@ import { User } from './users';
 export class LoginComponent {
   constructor( private router: Router, private userservice : UserService) {}
 
+  isAuthenticated: boolean = true;
   username!: string;
   password!: string;
   users!: User[];
   ngOnInit(): void {
     this.userservice.getUsers().subscribe(data => {
       this.users = data;
-      console.log(this.users);
     });
   }
   redirigerVersAccueil() {
@@ -30,13 +31,17 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.username === 'admin' && this.password === 'root') {
-      this.router.navigate(['/dashboard']);
+    const user = this.users.find(user => user.username === this.username && user.password === this.password);
+    if (user) {
+      if (user.role === 'admin') {
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.router.navigate(['/success']);
+      }
     } else {
-      this.router.navigate(['/success']);
+      console.log('Nom d\'utilisateur ou mot de passe incorrect');
+      this.isAuthenticated = false;
     }
   }
-
-
 }
 

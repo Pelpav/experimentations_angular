@@ -16,5 +16,9 @@
     </form>
   </div>
 </div>
+<div *ngIf="!isAuthenticated" class="alert alert-danger" role="alert">
+  Nom d'utilisateur ou mot de passe incorrect.
+</div>
+
 <button class="btn btn-secondary mt-3" (click)="redirigerVersAccueil()">Rediriger vers la page principale</button>
 
