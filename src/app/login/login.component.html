@@ -1,24 +1,22 @@
-<div class="text-center">
-  <h1>Connexion</h1>
-  <div class="form-container">
-    <form class="mt-4" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control">
-      </div>
-      <br><br>
-      <div class="form-group">
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control">
-      </div>
-      <br><br><br>
-      <button type="submit" class="btn btn-primary">Envoyer</button>
+
+<div class="container">
+  <div class="login form">
+    <header>Login</header>
+    <form (ngSubmit)="onSubmit()">
+      <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" placeholder="Enter your email">
+      <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Enter your password">
+      <input type="submit" class="button" value="Login">
     </form>
+    <button class="button" (click)="redirigerVersAccueil()">Page Précédente</button>
   </div>
-</div>
+
+
+
 <div *ngIf="!isAuthenticated" class="alert alert-danger" role="alert">
   Nom d'utilisateur ou mot de passe incorrect.
 </div>
 
-<button class="btn btn-secondary mt-3" (click)="redirigerVersAccueil()">Rediriger vers la page principale</button>
+
+
+
 
