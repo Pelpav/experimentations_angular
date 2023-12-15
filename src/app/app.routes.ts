@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'accueil', component: PagePrincipaleComponent },
   { path: 'connexion', component: LoginComponent },
   { path: 'success', component: SuccessComponent},
-  { path: 'dashboard', component: DashboardComponent}
+  { path: 'dashboard', component: DashboardComponent},
 
 ];
 

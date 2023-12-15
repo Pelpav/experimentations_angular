@@ -33,6 +33,7 @@ export class LoginComponent {
   onSubmit() {
     const user = this.users.find(user => user.username === this.username && user.password === this.password);
     if (user) {
+      this.userservice.setCurrentUser(user); // Définir l'utilisateur actuel
       if (user.role === 'admin') {
         this.router.navigate(['/dashboard']);
       } else {
@@ -44,4 +45,3 @@ export class LoginComponent {
     }
   }
 }
-

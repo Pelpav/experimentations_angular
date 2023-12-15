@@ -7,6 +7,7 @@ import { User } from './login/users';
 })
 export class UserService {
   private readonly Url  = 'assets/users.json';
+  private currentUser: User | null = null;
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +17,15 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.Url, user);
   }
+  setCurrentUser(user: User) {
+    this.currentUser = user;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+
+  getCurrentUser(): User | null {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user) : null;
+  }
+
 
 }
